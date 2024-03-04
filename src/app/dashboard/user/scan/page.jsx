@@ -16,7 +16,7 @@ const QrScannerForm = () => {
 
   const balls = (result) => {
     addToast({message: `QR code scanned successfully!: ${result}`, type: 'success'});
-    router.push(`/dashboard/user/scan/verify/${result}`);
+    router.push(`/dashboard/user/?id=${result}`);
   };
 
   const handleScan = (result, error) => {
@@ -31,7 +31,7 @@ const QrScannerForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (qrCode) {
-      router.push(`/dashboard/user/scan/verify/${qrCode}`);
+      router.push(`/dashboard/user/?id=${result}`);
     } else {
       setError("Please scan a QR code before verifying.");
     }
