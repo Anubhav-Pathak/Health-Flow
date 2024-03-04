@@ -38,26 +38,32 @@ const DoctorRegisterForm = () => {
       return
     }
 
-
-    setLoadingState("doctor-register-form", true)
-    const response = await fetch('/api/register', {
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: nameRef.current.value, 
-        email: emailRef.current.value, 
-        password: passwordRef.current.value,
-        phone: phoneRef.current.value,
-        gender: genderRef.current.value,
-        speciality: specialityRef.current.value,
-        isDoctor: true
+    try{
+      setLoadingState("doctor-register-form", true)
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: nameRef.current.value, 
+          email: emailRef.current.value, 
+          password: passwordRef.current.value,
+          phone: phoneRef.current.value,
+          gender: genderRef.current.value,
+          speciality: specialityRef.current.value,
+          isDoctor: true
+        })
       })
-    })
-    if (response.error) addToast({message: response.error, type: 'error'});
-    else if (response.ok) addToast({message: 'Account created successfully', type: 'success'});
-    setLoadingState("doctor-register-form", false)
+      if(response.ok) addToast({message: 'User successfully created', type: 'success'})
+      else if(response.status == 409) addToast({message: 'User already exists', type: 'error'})
+      else throw new Error('Internal server error')
+    }
+    catch (error){
+      addToast({message: error.message, type: 'error'});
+    } finally{
+      setLoadingState("doctor-register-form", false)
+    }
   }
 
   return (
