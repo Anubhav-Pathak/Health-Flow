@@ -18,6 +18,8 @@ const LoginForm = () => {
     const password = passwordRef.current.value;
     const response = await signIn('credentials', {username, password, redirect: false})
 
+    console.log({response});
+
     if(response.error) addToast({message: response.error, type: 'error'});
   }
 
