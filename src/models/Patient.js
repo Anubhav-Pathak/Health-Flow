@@ -6,20 +6,23 @@ const patientSchema = new Schema({
         type: String,
         required: true
     },
-    age: {
-        type: Number,
+    aadharno: {
+        type: String,
         required: true
     },
-    gender: {
+    phone: {
         type: String,
-        enum: ['Male', 'Female', 'Other'],
         required: true
     },
-    email: {
+    p_contact: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
+    medicalRecords: [
+        {
+            type: String,
+        }
+    ],    
     createdAt: {
         type: Date,
         default: Date.now

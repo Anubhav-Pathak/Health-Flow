@@ -5,15 +5,15 @@ import Doctor from "@/models/Doctor";
 import connectDB from "@/utils/db";
 
 export const POST = async (req) => {
-    const {name, email, password, speciality, phone} = await req.json();
+    const {name, email, password, gender, speciality, phone} = await req.json();
     try {
         await connectDB();
-        const existingUser = await Doctor.findOne({name});
+        const existingUser = await Doctor.findOne({email});
         if (existingUser) {
             return NextResponse.json({ message: "User already exists", status: 405 });
         }
         const hashedPassword = await argon2.hash(password);
-        await new Doctor({name, email, hashedPassword, gender, speciality, phone}).save();
+        await new Doctor({name, email, password: hashedPassword, gender, speciality, phone}).save();
         return NextResponse.json({ message: "User created", status: 201});
     } catch (error) {
         console.error(error);
