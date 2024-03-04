@@ -8,7 +8,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 const options = {
     providers: [
         CredentialsProvider({
-            name: "credentials",
+            name: "Doctor",
             credentials: {
               username: { label: "Username", type: "email" },
               password: { label: "Password", type: "password" }
@@ -16,6 +16,22 @@ const options = {
             async authorize(credentials) {
                 await connectDB();
                 const user = await Doctor.findOne({ email: credentials.email });
+                if (user && user.password === credentials.password) {
+                    return user;
+                } else {
+                    return null;
+                }
+            }
+        }),
+        CredentialsProvider({
+            name: "Patient",
+            credentials: {
+              username: { label: "Username", type: "email" },
+              password: { label: "Password", type: "password" }
+            },
+            async authorize(credentials) {
+                await connectDB();
+                const user = await Patient.findOne({ email: credentials.email });
                 if (user && user.password === credentials.password) {
                     return user;
                 } else {

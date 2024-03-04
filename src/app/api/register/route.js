@@ -31,7 +31,7 @@ export const POST = async (req) => {
             const qrBuffer = await qrcode.toBuffer(doctor._id.toString(), { type: 'png' });
             const mailOptions = {
                 to: email,
-                from: 'aryanraj2713@gmail.com',
+                from: 'anubhavpathak99@gmail.com',
                 subject: 'OneHealth - QR Code Attachment',
                 text: 'This email contains a QR code attachment. Please scan the QR code to access your account.',
                 attachments: [
