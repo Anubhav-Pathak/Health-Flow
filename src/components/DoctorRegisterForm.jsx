@@ -10,7 +10,7 @@ import Select from './ui/Select';
 
 import data from '@/data.json';
 
-const RegisterForm = () => {
+const DoctorRegisterForm = () => {
 
   const addToast = useToastStore((state) => state.addToast);
   const { loadingStates, setLoadingState } = useLoadingStore();
@@ -52,6 +52,7 @@ const RegisterForm = () => {
         phone: phoneRef.current.value,
         gender: genderRef.current.value,
         speciality: specialityRef.current.value,
+        isDoctor: true
       })
     })
     if (response.error) addToast({message: response.error, type: 'error'});
@@ -85,4 +86,4 @@ const RegisterForm = () => {
   )
 }
 
-export default RegisterForm
+export default DoctorRegisterForm

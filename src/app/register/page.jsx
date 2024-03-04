@@ -3,6 +3,7 @@
 import React from 'react'
 
 import DoctorRegisterForm from '@/components/DoctorRegisterForm'
+import PatientRegisterForm from '@/components/PatientRegisterForm'
 import Toast from "@/components/ui/Toast";
 
 const Register = () => {
@@ -13,7 +14,7 @@ const Register = () => {
         <div role="tabpanel" className="tab-content p-10"><DoctorRegisterForm /></div>
 
         <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Register as Patient" defaultChecked/>
-        <div role="tabpanel" className="tab-content p-10">Tab content 2</div>
+        <div role="tabpanel" className="tab-content p-10"><PatientRegisterForm /></div>
       </div>
       <Toast />
     </main>

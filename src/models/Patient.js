@@ -34,4 +34,4 @@ const patientSchema = new Schema({
     disease: [{type: String}]
 });
 
-export default mongoose.models.Patient ?? model('Doctor', doctorSchema);
+export default mongoose.models.Patient ?? model('Patient', patientSchema);
