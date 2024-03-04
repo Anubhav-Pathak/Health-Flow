@@ -29,6 +29,9 @@ const LoginForm = () => {
       <Input ref={passwordRef} type="password" label="Password" />
       <Link href="/forgot-password" className='text-sm hover:underline'>Forgot password?</Link>
       <button type="submit" className="btn btn-primary mt-4">Log In</button>
+
+      <button className='btn btn-error mt-4'>Emergency Login</button>
+
       <p>Don&apos;t have an account? <Link href="/register" className='hover:underline'>Register</Link></p>
     </form>
   )

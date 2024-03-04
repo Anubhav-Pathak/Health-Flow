@@ -25,7 +25,7 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={submitHandler} className='card-body'>
-      <Input ref={usernameRef} type="text" label="Username" />
+      <Input ref={usernameRef} type="email" label="Email" />
       <Input ref={passwordRef} type="password" label="Password" />
       <Link href="/forgot-password" className='text-sm hover:underline'>Forgot password?</Link>
       <button type="submit" className="btn btn-primary mt-4">Log In</button>
